@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+
+}
+
+ul a {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(184, 134, 11);
+    padding: 10px;
+    border-radius: 10px;
+    transition: ease-in-out all 0.3s;
+}
+
+ul a:hover {
+    background-color: rgb(142, 103, 5);
+}
+
+ul li {
+    transition: all ease-in-out 0.3s;
+}
+
+ul li:hover {
+    transform: scale(105%);
+}

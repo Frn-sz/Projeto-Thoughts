@@ -1,5 +1,5 @@
 {
-  "name": "projeto-toughts",
+  "name": "projeto-Thoughts",
   "version": "1.0.0",
   "description": "Projeto baseado no curso de Node JS do Matheus Battisti, na plataforma Udemy.",
   "main": "index.js",
@@ -24,6 +24,6 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "express-handlebars": "^7.0.7"
+    "express-handlebars": "^7.1.0"
   }
 }

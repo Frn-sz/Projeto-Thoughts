@@ -1,8 +1,9 @@
 const { Sequelize: SequelizeConn } = require("sequelize");
 
-const Sequelize = new SequelizeConn("toughts", "root", "", {
+const Sequelize = new SequelizeConn("thoughts", "root", "", {
   host: "localhost",
   dialect: "mysql",
+  port: '3307'
 });
 
 try {

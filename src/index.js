@@ -6,16 +6,24 @@ const Flash = require("express-flash");
 const path = require("path");
 const os = require("os");
 const app = Express();
-
-const conn = require("./Database/conn");
+const conn = require("./database/conn");
 
 //Models
 
-const Tought = require("./Models/Tought");
-const User = require("./Models/User")
+const Thought = require("./models/Thought");
+const User = require("./models/User");
+
+//Controllers
+const ThoughtController = require("./controller/ThoughtController");
+
+//Routers
+const thoughtsRoutes = require('./routes/thoughtsRoutes');
+
+app.use(Express.static(__dirname + '/public'));
 
 app.engine("handlebars", Exphbs.engine());
-app.set("View engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "handlebars");
 
 app.use(Express.urlencoded({ extended: true }));
 
@@ -42,7 +50,9 @@ app.use(
 
 app.use(Flash());
 
-app.use(Express.static('Public'));
+
+app.get('/', ThoughtController.showThoughts);
+app.use('/thoughts', thoughtsRoutes);
 
 app.use((req, res, next) => {
 
@@ -53,7 +63,7 @@ app.use((req, res, next) => {
   next();
 })
 conn
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     app.listen(3000);
   })
