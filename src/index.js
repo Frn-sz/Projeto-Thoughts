@@ -18,6 +18,7 @@ const ThoughtController = require("./controller/ThoughtController");
 
 //Routers
 const thoughtsRoutes = require('./routes/thoughtsRoutes');
+const authRoutes = require('./routes/authRoutes')
 
 app.use(Express.static(__dirname + '/public'));
 
@@ -53,7 +54,7 @@ app.use(Flash());
 
 app.get('/', ThoughtController.showThoughts);
 app.use('/thoughts', thoughtsRoutes);
-
+app.use('/', authRoutes)
 app.use((req, res, next) => {
 
   if (req.session.userId) {
