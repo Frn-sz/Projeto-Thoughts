@@ -58,10 +58,10 @@ app.use((req, res, next) => {
 
   next();
 })
-
-app.get('/', ThoughtController.showThoughts);
 app.use('/thoughts', thoughtsRoutes);
 app.use('/', authRoutes)
+app.get('/', ThoughtController.showThoughts);
+
 
 conn
   .sync({ force: false })
