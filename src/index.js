@@ -50,11 +50,6 @@ app.use(
 );
 
 app.use(Flash());
-
-
-app.get('/', ThoughtController.showThoughts);
-app.use('/thoughts', thoughtsRoutes);
-app.use('/', authRoutes)
 app.use((req, res, next) => {
 
   if (req.session.userId) {
@@ -63,6 +58,11 @@ app.use((req, res, next) => {
 
   next();
 })
+
+app.get('/', ThoughtController.showThoughts);
+app.use('/thoughts', thoughtsRoutes);
+app.use('/', authRoutes)
+
 conn
   .sync({ force: false })
   .then(() => {
