@@ -5,4 +5,23 @@
   </div>
 
   <h3>Seus pensamentos</h3>
+
+  <ul>
+    {{#each thoughts}}
+
+      <li class="label">{{this.title}}
+        <span class="actions">
+          <a href="/thoughts/edit/{{this.id}}" class="btn">Editar</a>
+          <form action="/thoughts/remove" method="POST">
+            <input type="hidden" name="id" value="{{this.id}}" />
+            <input type="submit" value="Excluir" class="btn" />
+          </form>
+        </span>
+      </li>
+    {{/each}}
+  </ul>
+
+  {{#if isEmpty}}
+    <p>Nenhum pensamento cadastrado!</p>
+  {{/if}}
 </div>
